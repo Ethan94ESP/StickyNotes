@@ -1,5 +1,6 @@
 package com.ethan.stickynotes.ui.presentation.notes
 
+import android.content.Context
 import androidx.compose.animation.*
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -14,14 +15,17 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.ethan.stickynotes.R
 import com.ethan.stickynotes.tests.TestTags
 import com.ethan.stickynotes.ui.presentation.notes.components.NoteItem
 import com.ethan.stickynotes.ui.presentation.notes.components.OrderSection
 import com.ethan.stickynotes.ui.presentation.utils.Screen
 import kotlinx.coroutines.launch
+
 @ExperimentalAnimationApi
 @Composable
 fun NotesScreen(
@@ -31,7 +35,8 @@ fun NotesScreen(
     val state = viewModel.state.value
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
-
+    val message = stringResource(id = R.string.note_deleted)
+    val undo = stringResource(id = R.string.undo)
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
@@ -40,7 +45,7 @@ fun NotesScreen(
                 },
                 backgroundColor = MaterialTheme.colors.primary
             ) {
-                Icon(imageVector = Icons.Default.Add, contentDescription = "Add")
+                Icon(imageVector = Icons.Default.Add, contentDescription = stringResource(R.string.add))
             }
         },
         scaffoldState = scaffoldState
@@ -51,12 +56,14 @@ fun NotesScreen(
                 .padding(padding)
         ) {
             Row(
-                modifier = Modifier.fillMaxWidth().padding(16.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Your note",
+                    text = stringResource(R.string.your_note),
                     style = MaterialTheme.typography.h4
                 )
                 IconButton(
@@ -66,7 +73,7 @@ fun NotesScreen(
                 ) {
                     Icon(
                         imageVector = Icons.Default.Sort,
-                        contentDescription = "Sort"
+                        contentDescription = stringResource(R.string.sort)
                     )
                 }
             }
@@ -103,8 +110,8 @@ fun NotesScreen(
                             viewModel.onEvent(NotesEvent.DeleteNote(note))
                             scope.launch {
                                 val result = scaffoldState.snackbarHostState.showSnackbar(
-                                    message = "Note deleted",
-                                    actionLabel = "Undo"
+                                    message = message,
+                                    actionLabel = undo
                                 )
                                 if(result == SnackbarResult.ActionPerformed) {
                                     viewModel.onEvent(NotesEvent.RestoreNote)
