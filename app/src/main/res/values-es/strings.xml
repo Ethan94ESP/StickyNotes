@@ -4,11 +4,15 @@
     <string name='note_deleted'>Nota eliminada</string>
     <string name="delete_note">Borrar nota</string>
     <string name='sort'>Ordenar</string>
-    <string name='your_note'>Tu nota</string>
+    <string name='your_note'>Tus notas</string>
     <string name='add'>Agregar</string>
     <string name='title'>Título</string>
     <string name='date'>Fecha</string>
     <string name='color'>Color</string>
     <string name='ascending'>Ascendente</string>
     <string name='descending'>Descendente</string>
+    <string name='save'>Guardar</string>
+    <string name='error_save_note'>No se pudo guardar la nota</string>
+    <string name='enter_title'>Ingrese el título…</string>
+    <string name='enter_some'>Ingrese algún contenido</string>
 </resources>

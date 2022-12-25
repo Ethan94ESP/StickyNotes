@@ -14,6 +14,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.ethan.stickynotes.ui.presentation.notes.NotesScreen
+import com.ethan.stickynotes.ui.presentation.notes_content.AddEditNoteScreen
 import com.ethan.stickynotes.ui.presentation.utils.Screen
 import com.ethan.stickynotes.ui.theme.StickyNotesTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -58,10 +59,10 @@ class MainActivity : ComponentActivity() {
                             )
                         ) {
                             val color = it.arguments?.getInt("noteColor") ?: -1
-                            /*AddEditNoteScreen(
+                            AddEditNoteScreen(
                                 navController = navController,
                                 noteColor = color
-                            )*/
+                            )
                         }
                     }                }
             }

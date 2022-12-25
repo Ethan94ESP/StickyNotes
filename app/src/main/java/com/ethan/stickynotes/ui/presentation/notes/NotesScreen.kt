@@ -1,6 +1,5 @@
 package com.ethan.stickynotes.ui.presentation.notes
 
-import android.content.Context
 import androidx.compose.animation.*
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -94,7 +93,7 @@ fun NotesScreen(
                 )
             }
             Spacer(modifier = Modifier.height(16.dp))
-            LazyColumn(modifier = Modifier.fillMaxSize()) {
+            LazyColumn(modifier = Modifier.fillMaxSize().padding(16.dp)) {
                 items(state.notes) { note ->
                     NoteItem(
                         note = note,
