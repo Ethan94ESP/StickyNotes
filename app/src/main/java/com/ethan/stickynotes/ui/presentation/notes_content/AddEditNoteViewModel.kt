@@ -1,5 +1,6 @@
 package com.ethan.stickynotes.ui.presentation.notes_content
 
+import android.app.Application
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.toArgb
@@ -7,7 +8,6 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ethan.stickynotes.R
-import com.ethan.stickynotes.StickyNotesApp
 import com.ethan.stickynotes.domain.model.InvalidNoteException
 import com.ethan.stickynotes.domain.model.Note
 import com.ethan.stickynotes.domain.use_case.NoteUseCases
@@ -20,7 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AddEditNoteViewModel @Inject constructor(
     private val noteUseCases: NoteUseCases,
-    private val application: StickyNotesApp,
+    private val application: Application,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
